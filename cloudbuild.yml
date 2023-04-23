@@ -1,0 +1,18 @@
+steps:
+- name: gcr.io/cloud-builders/docker
+  entrypoint: docker
+  args: [
+        "build"
+        , "-t"
+        , "australia-southeast1-docker.pkg.dev/gcp-asx-crp-dev/dataflow-demo:latest"
+        , "-f"
+        , "./dataflow/Dockerfile"
+        , "."
+  ]
+- name: gcr.io/cloud-builders/docker
+  entrypoint: docker
+  args: [
+        "push"
+      , "australia-southeast1-docker.pkg.dev/gcp-asx-crp-dev/dataflow-demo:latest"
+  ]
+timeout: 3600s    
